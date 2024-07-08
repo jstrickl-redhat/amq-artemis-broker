@@ -29,7 +29,7 @@ spec:
       sources:
         - repoURL: '{{.repoUrl}}'
           targetRevision: HEAD
-          path: 'amq-artemis-operator/{{.brokerName}}/{{.env}}'
+          path: 'amq-artemis-bundle/{{.brokerName}}/{{.env}}'
       destination:
         server: '{{.cluster}}'
         namespace: '{{.namespace}}'
