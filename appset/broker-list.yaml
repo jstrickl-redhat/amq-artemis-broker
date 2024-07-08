@@ -1,0 +1,16 @@
+key:
+  components:
+    - name: broker-1-dev
+      brokerName: broker-1
+      cluster: dev
+      repoUrl: "https://github.com/jstrickl-redhat/amq-artemis-broker.git"
+      namespace: broker-1-dev
+      project: brokers-dev
+      env: dev
+    - name: broker-2-dev
+      brokerName: broker-2
+      cluster: dev
+      repoUrl: "https://github.com/jstrickl-redhat/amq-artemis-broker.git"
+      namespace: broker-2-dev
+      project: brokers-dev
+      env: dev
