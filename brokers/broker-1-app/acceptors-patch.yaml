@@ -1,0 +1,10 @@
+- op: add
+  path: /metadata/acceptors/-
+  value:
+    - expose: false
+      name: testing
+      port: 61617
+      protocols: all
+      sslEnabled: true
+      sslSecret: primary-tls
+      trustSecret: primary-tls

@@ -1,0 +1,15 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: default
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  channel: default
+  installPlanApproval: Automatic
+  name: default
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: default

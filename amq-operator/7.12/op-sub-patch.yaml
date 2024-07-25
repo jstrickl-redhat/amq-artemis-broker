@@ -1,0 +1,15 @@
+- op: replace
+  path: /metadata/name
+  value: amq-broker-rhel8
+
+- op: replace
+  path: /spec/channel
+  value: '7.12.x'
+
+- op: replace
+  path: /spec/name
+  value: amq-broker-rhel8
+
+- op: replace
+  path: /spec/startingCSV
+  value: amq-broker-operator.v7.12.0-opr-2

@@ -1,0 +1,8 @@
+- op: replace
+  path: /spec/brokerProperties
+  value:
+    - storeConfiguration=DATABASE
+    - storeConfiguration.jdbcDriverClassName=org.postgresql.Driver
+    - storeConfiguration.jdbcConnectionUrl=jdbc:$DB_URL/$DB_NAME?user=$DB_USER&password=$DB_PASS
+    - HAPolicyConfiguration=SHARED_STORE_BACKUP
+    - HAPolicyConfiguration.failOverOnServerShutdown=true

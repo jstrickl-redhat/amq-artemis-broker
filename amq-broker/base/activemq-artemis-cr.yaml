@@ -1,0 +1,140 @@
+apiVersion: broker.amq.io/v1beta1
+kind: ActiveMQArtemis
+metadata:
+  name: default
+  namespace: testing
+spec:
+  acceptors:
+    - expose: false
+      name: internal
+      port: 61617
+      protocols: all
+      sslEnabled: true
+      sslSecret: primary-tls
+      trustSecret: primary-tls
+    - expose: true
+      name: ssl
+      needClientAuth: true
+      port: 61618
+      protocols: all
+      sslEnabled: true
+      sslSecret: primary-tls
+      trustSecret: primary-tls
+  brokerProperties:
+    - remove.value=-
+    - storeConfiguration.jdbcConnectionUrl=jdbc:postgresql://postgresql.<database>-test.svc.cluster.local:5432/sampledb?user=<user>&password=<password>
+    - storeConfiguration.jdbcDriverClassName=org.postgresql.Driver
+    - storeConfiguration.jdbcConnectionUrl=jdbc:$DB_URL/$DB_NAME?user=$DB_USER&password=$DB_PASS
+    - HAPolicyConfiguration=SHARED_STORE_PRIMARY
+  console:
+    expose: true
+    sslEnabled: false
+  deploymentPlan:
+    size: 1
+    persistenceEnabled: true
+    requireLogin: false
+    extraVolumeMounts:
+      - mountPath: /opt/extra-lib
+        name: extra-volume
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1024Mi
+      requests:
+        cpu: 250m
+        memory: 512Mi
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+    messageMigration: false
+    extraVolumes:
+      - name: extra-volume
+        persistentVolumeClaim:
+          claimName: extra-jars
+    managementRBACEnabled: true
+    livenessProbe:
+      failureThreshold: 30
+      initialDelaySeconds: 5
+      periodSeconds: 5
+    journalType: nio
+    startupProbe:
+      exec:
+        command:
+          - /bin/bash
+          - '-c'
+          - /opt/amq/bin/artemis
+          - check
+          - node
+          - '--up'
+          - '--url'
+          - 'tcp://$HOSTNAME:61616'
+      failureThreshold: 30
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      timeoutSeconds: 10
+    jolokiaAgentEnabled: false
+    clustered: false
+    storage:
+      size: 4Gi
+  env:
+    - name: ARTEMIS_EXTRA_LIBS
+      value: /opt/extra-lib
+    - name: CLUSTER_USER
+      valueFrom:
+        secretKeyRef:
+          key: AMQ_CLUSTER_USER
+          name: cluster-credentials-secret
+    - name: CLUSTER_PASS
+      valueFrom:
+        secretKeyRef:
+          key: AMQ_CLUSTER_PASSWORD
+          name: cluster-credentials-secret
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          key: database-user
+          name: postgresql
+    - name: DB_PASS
+      valueFrom:
+        secretKeyRef:
+          key: database-password
+          name: postgresql
+    - name: DB_NAME
+      valueFrom:
+        secretKeyRef:
+          key: database-name
+          name: postgresql
+    - name: DB_URL
+      valueFrom:
+        secretKeyReg:
+          key: database-url
+          name: postgresql
+    - name: DB_DRIVER_URL
+      valueFrom:
+        secretKeyReg:
+          key: database-jdbc-driver
+          name: postgresql
+  resourceTemplates:
+    - patch:
+        kind: StatefulSet
+        spec:
+          template:
+            spec:
+              initContainers:
+                - args:
+                    - '-c'
+                    - >-
+                      if ! [ -f /opt/extra-lib/postgres-connector.jar ]; then
+                      curl $DB_DRIVER_URL --output /opt/extra-lib/postgres-connector.jar ; fi
+                  command:
+                    - /bin/sh
+                  image: 'curlimages/curl:8.6.0'
+                  name: postgres-jdbc-driver-init
+                  volumeMounts:
+                    - mountPath: /opt/extra-lib
+                      name: extra-volume
+      selector:
+        kind: StatefulSet
+  upgrades:
+    enabled: true
+    minor: true

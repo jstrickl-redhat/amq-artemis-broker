@@ -1,9 +1,0 @@
-- op: replace
-  path: /metadata/name
-  value: amq-artemis-broker-1-dev
-
-- op: replace
-  path: /spec/brokerProperties
-  value:
-    - something=something
-    - dog=cat

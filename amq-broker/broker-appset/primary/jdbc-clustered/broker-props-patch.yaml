@@ -1,0 +1,23 @@
+- op: replace
+  path: /spec/brokerProperties
+  value:
+    - remove.value=-
+    - storeConfiguration.jdbcDriverClassName=org.postgresql.Driver
+    - storeConfiguration.jdbcConnectionUrl=jdbc:$DB_URL/$DB_NAME?user=$DB_USER&password=$DB_PASS
+    - HAPolicyConfiguration=SHARED_STORE_PRIMARY
+    - clusterConfigurations.my-cluster=-
+    - discoveryGroupConfigurations.my-discovery-group=-
+    - broadcastGroupConfigurations.my-broadcast-group=-
+    - clusterConfiguration.custom-cluster.name=custom-cluster
+    - clusterConfigurations.custom-cluster.retryInterval=1000
+    - clusterConfigurations.custom-cluster.retryIntervalMultiplier=2
+    - clusterConfigurations.custom-cluster.maxRetryInterval=32000
+    - clusterConfigurations.custom-cluster.initialConnectAttempts=20
+    - clusterConfigurations.custom-cluster.reconnectAttempts=10
+    - clusterConfigurations.custom-cluster.useDuplicateDetection=true
+    - clusterConfigurations.custom-cluster.messageLoadBalancing=ON_DEMAND
+    - clusterConfigurations.custom-cluster.maxHops=1
+    - clusterConfigurations.custom-cluster.connectorName=primary-broker-ssl
+    - clusterConfigurations.custom-cluster.staticConnectors=backup-broker-ssl
+    - clusterUser=$CLUSTER_USER
+    - clusterPassword=$CLUSTER_PASS

@@ -13,7 +13,7 @@ spec:
               repoURL: https://github.com/jstrickl-redhat/amq-artemis-broker.git
               revision: HEAD
               files:
-                - path: broker-group.yaml
+                - path: amq-broker/broker-appset/broker-group.yaml
           - list:
               elementsYaml: "{{ .key.components | toJson }}"
   template:
@@ -29,7 +29,7 @@ spec:
       sources:
         - repoURL: '{{.repoUrl}}'
           targetRevision: HEAD
-          path: 'brokers/{{.brokerName}}/{{.env}}'
+          path: 'amq-broker/broker-appset/{{.brokerType}}/{{.ha}}'
       destination:
         server: '{{.cluster}}'
         namespace: '{{.namespace}}'

@@ -1,0 +1,20 @@
+#   Define Cluster Connectors
+- op: add
+  path: /spec/connectors
+  value:
+    - host: >-
+        primary-broker-ssl-0-svc-rte-testing.apps.cluster-4jhd9.4jhd9.sandbox820.opentlc.com
+      name: primary-broker-ssl
+      needClientAuth: true
+      port: 443
+      sslEnabled: true
+      sslSecret: primary-tls
+      trustSecret: primary-tls
+    - host: >-
+        backup-broker-ssl-0-svc-rte-testing.apps.cluster-4jhd9.4jhd9.sandbox820.opentlc.com
+      name: backup-broker-ssl
+      needClientAuth: true
+      port: 443
+      sslEnabled: true
+      sslSecret: primary-tls
+      trustSecret: primary-tls

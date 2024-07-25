@@ -1,0 +1,20 @@
+key:
+  components:
+    - name: test
+      brokerType: primary
+      brokerName: primary
+      ha: jdbc-clustered
+      env: dev
+      repoUrl: "https://github.com/jstrickl-redhat/amq-artemis-broker.git"
+      namespace: testing
+      project: brokers-dev
+      cluster: dev
+    - brokerType: backup
+      name: test32
+      brokerName: backup
+      ha: jdbc-clustered
+      env: dev
+      repoUrl: "https://github.com/jstrickl-redhat/amq-artemis-broker.git"
+      namespace: testing
+      project: brokers-dev
+      cluster: dev
