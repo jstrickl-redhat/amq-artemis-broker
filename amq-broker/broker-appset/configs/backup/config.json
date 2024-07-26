@@ -1,0 +1,11 @@
+{
+  "name": "test",
+  "brokerType": "backup",
+  "brokerName": "backup",
+  "ha": "jdbc-clustered",
+  "env": "dev",
+  "repoUrl": "https://github.com/jstrickl-redhat/amq-artemis-broker.git",
+  "namespace": "testing",
+  "project": "default",
+  "cluster": "dev"
+}

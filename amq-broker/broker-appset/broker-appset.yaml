@@ -11,7 +11,7 @@ spec:
         repoURL: https://github.com/argoproj/argo-cd.git
         revision: HEAD
         files:
-        - path: "amq-broker/broker-appset/config.json"
+        - path: "amq-broker/broker-appset/configs/*/config.json"
   template:
     metadata:
       name: '{{.name}}'
