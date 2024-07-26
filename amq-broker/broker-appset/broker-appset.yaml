@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: brokers-appset
+  namespace: user1-argocd
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -20,6 +21,7 @@ spec:
       name: '{{.name}}'
     spec:
       project: default
+      namespace: user1-argocd
       syncPolicy:
         automated:
           selfHeal: true
