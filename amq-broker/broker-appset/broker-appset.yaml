@@ -7,15 +7,11 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-    - matrix:
-        generators:
-          - git:
-              repoURL: https://github.com/jstrickl-redhat/amq-artemis-broker.git
-              revision: HEAD
-              files:
-                - path: amq-broker/broker-appset/broker-group.yaml
-          - list:
-              elementsYaml: "{{ .key.components | toJson }}"
+    - git:
+        repoURL: https://github.com/argoproj/argo-cd.git
+        revision: HEAD
+        files:
+        - path: "amq-broker/broker-appset/config.json"
   template:
     metadata:
       name: '{{.name}}'
