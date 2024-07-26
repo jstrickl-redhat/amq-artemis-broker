@@ -8,7 +8,7 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-        repoURL: https://github.com/argoproj/argo-cd.git
+        repoURL: https://github.com/jstrickl-redhat/amq-artemis-broker.git
         revision: HEAD
         files:
         - path: "amq-broker/broker-appset/configs/*/config.json"
