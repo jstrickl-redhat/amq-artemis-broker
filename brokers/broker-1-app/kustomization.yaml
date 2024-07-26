@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - ../../amq-broker/broker-appset
   - brokers-root-app.yaml
-  - argocd-project.yaml
 
 patches:
   - target:
