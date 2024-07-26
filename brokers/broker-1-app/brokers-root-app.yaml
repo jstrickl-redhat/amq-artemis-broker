@@ -5,11 +5,3 @@ metadata:
   namespace: testing
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-spec:
-  destination:
-    name: in-cluster
-  project: default
-  source:
-    path: amq-broker/broker-appset/
-    repoURL: https://github.com/jstrickl-redhat/amq-artemis-broker.git
-    targetRevision: HEAD
