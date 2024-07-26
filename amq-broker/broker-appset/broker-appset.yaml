@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: brokers-appset
-  namespace: testing
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -19,7 +18,6 @@ spec:
   template:
     metadata:
       name: '{{.name}}'
-      namespace: testing
     spec:
       project: default
       syncPolicy:
