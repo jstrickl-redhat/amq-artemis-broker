@@ -19,9 +19,9 @@ spec:
   template:
     metadata:
       name: '{{.name}}'
-      namespace: openshift-gitops
+      namespace: testing
     spec:
-      project: openshift-gitops
+      project: default
       syncPolicy:
         automated:
           selfHeal: true
