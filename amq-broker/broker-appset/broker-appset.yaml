@@ -15,10 +15,9 @@ spec:
   template:
     metadata:
       name: '{{.name}}'
-      namespace: user1-argocd
     spec:
       project: default
-      namespace: user1-argocd
+      namespace: testing-2
       syncPolicy:
         automated:
           selfHeal: true
@@ -30,4 +29,4 @@ spec:
           path: 'amq-broker/broker-appset/{{.brokerType}}/{{.ha}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: user1-argocd
+        namespace: testing-2
