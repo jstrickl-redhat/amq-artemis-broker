@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: broker-root-app-1
-  namespace: openshift-gitops
+  namespace: testing
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
