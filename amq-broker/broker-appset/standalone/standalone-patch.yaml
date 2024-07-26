@@ -1,0 +1,16 @@
+- op: replace
+  path: /metadata/name
+  value: standalone-broker
+
+- op: replace
+  path: /spec
+  value:
+    deploymentPlan:
+      image: placeholder
+      jolokiaAgentEnabled: false
+      journalType: nio
+      managementRBACEnabled: true
+      messageMigration: false
+      persistenceEnabled: false
+      requireLogin: false
+      size: 1

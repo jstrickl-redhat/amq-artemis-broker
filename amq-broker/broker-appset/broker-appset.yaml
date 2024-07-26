@@ -28,5 +28,5 @@ spec:
           targetRevision: HEAD
           path: 'amq-broker/broker-appset/{{.brokerType}}/{{.ha}}'
       destination:
-        server: https://kubernetes.default.svc
-        namespace: testing-2
+        server: '{{.cluster}}'
+        namespace: '{{.namespace}}'

@@ -7,5 +7,5 @@
     "repoUrl": "https://github.com/jstrickl-redhat/amq-artemis-broker.git",
     "namespace": "testing",
     "project": "default",
-    "cluster": "dev"
+    "cluster": "https://kubernetes.default.svc"
 }

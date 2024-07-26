@@ -2,12 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: broker-app
-  namespace: openshift-gitops
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    name: in-cluster
+    name: openshift-gitops
   project: default
   source:
     path: amq-broker/broker-appset/
