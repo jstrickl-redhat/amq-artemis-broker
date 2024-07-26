@@ -1,7 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: broker-root-app-1
-  namespace: testing
+  name: broker-app
+  namespace: openshift-gitops
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name: in-cluster
+  project: default
+  source:
+    path: amq-broker/broker-appset/
+    repoURL: 'https://github.com/jstrickl-redhat/amq-artemis-broker.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
