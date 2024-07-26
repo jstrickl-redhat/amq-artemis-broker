@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: brokers-appset
-  namespace: openshift-gitops
+  namespace: testing
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
