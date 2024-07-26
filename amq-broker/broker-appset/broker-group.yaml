@@ -7,7 +7,7 @@ key:
       env: dev
       repoUrl: "https://github.com/jstrickl-redhat/amq-artemis-broker.git"
       namespace: testing
-      project: brokers-dev
+      project: broker-root-app
       cluster: dev
     - brokerType: backup
       name: test32
@@ -16,5 +16,5 @@ key:
       env: dev
       repoUrl: "https://github.com/jstrickl-redhat/amq-artemis-broker.git"
       namespace: testing
-      project: brokers-dev
+      project: broker-root-app
       cluster: dev
