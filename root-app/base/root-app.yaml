@@ -7,8 +7,9 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    name: in-cluster
-  project: root-project
+    server: 'https://kubernetes.default.svc'
+    namespace: testing
+  project: default
   source:
     path: appset/appset.yaml
     repoURL: https://github.com/jstrickl-redhat/amq-artemis-broker.git
