@@ -20,7 +20,7 @@ spec:
     metadata:
       name: '{{.name}}'
     spec:
-      project: '{{.project}}'
+      project: openshift-gitops
       syncPolicy:
         automated:
           selfHeal: true
