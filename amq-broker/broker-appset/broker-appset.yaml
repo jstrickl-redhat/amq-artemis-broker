@@ -31,4 +31,4 @@ spec:
           path: 'amq-broker/broker-appset/{{.brokerType}}/{{.ha}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: testing
+        namespace: user1-argocd
