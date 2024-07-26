@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     name: in-cluster
-  project: broker-root-app-1
+  project: default
   source:
     path: amq-broker/broker-appset/
     repoURL: https://github.com/jstrickl-redhat/amq-artemis-broker.git
