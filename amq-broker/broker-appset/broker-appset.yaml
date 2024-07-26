@@ -19,6 +19,7 @@ spec:
   template:
     metadata:
       name: '{{.name}}'
+      namespace: openshift-gitops
     spec:
       project: openshift-gitops
       syncPolicy:
